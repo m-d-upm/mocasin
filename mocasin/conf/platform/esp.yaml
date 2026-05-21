@@ -1,0 +1,20 @@
+_target_: mocasin.platforms.esp.DesignerPlatformESP
+# Once hydra 1.1 rolls out with recursive instantiation,
+# we should replace this and recursively instantiate
+# the processors. See:
+# https://github.com/facebookresearch/hydra/issues/566
+processor_cpu:
+  _target_: mocasin.platforms.platformDesigner.genericProcessor
+  type : 'proc_type_0'
+  frequency : 78125000
+processor_accel:
+  _target_: mocasin.platforms.platformDesigner.genericProcessor
+  type : 'proc_type_1'
+  frequency : 78125000
+num_cpu : 4
+num_accel : 2
+symmetries_json: "${mocasin_path:platforms/symmetries/esp.json}"
+embedding_json: "${mocasin_path:platforms/embeddings/esp.json}"
+name : "esp"
+
+
